@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Post Details</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="header-logo-container">
+            <img src="/talknest-logo.png" alt="TalkNest Logo" class="header-logo">
+            <h1>TalkNest</h1>
+        </div>
+        <div><a href="/index.html" class="button">All Posts</a><button id="logout-button">Logout</button></div>
+    </header>
+    <main class="container">
+        <div id="post-detail-container"></div>
+        <hr>
+        <div class="comment-form-container">
+            <h3>Add a Comment</h3>
+            <form id="comment-form"><textarea id="comment-text" placeholder="What are your thoughts?"
+                    required></textarea><button type="submit">Submit Comment</button></form>
+            <p id="error-message" class="error"></p>
+        </div>
+        <h3>Comments</h3>
+        <div id="comments-container"></div>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>

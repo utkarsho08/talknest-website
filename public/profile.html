@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TalkNest - Profile</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>TalkNest</h1>
+        <div class="header-buttons">
+            <a href="/index.html" class="button">All Posts</a>
+            <a href="/topics.html" class="button">Browse Topics</a>
+            <a href="/create-topic.html" class="button">Create Topic</a>
+            <a href="/create-post.html" class="button">Create Post</a>
+            <button id="logout-button">Logout</button>
+        </div>
+    </header>
+
+    <main class="container" id="profile-page">
+        <h1 class="page-title">Your Profile</h1>
+        <div class="profile-card">
+            <div class="profile-header">
+                <div id="profile-initials" class="profile-initials">
+                </div>
+                <div class="profile-info-block">
+                    <h2 id="profile-username" class="profile-username">
+                        Loading Username...
+                        <button id="edit-username-button" class="edit-button" title="Edit Username">
+                            <i class="material-icons">edit</i>
+                        </button>
+                    </h2>
+                    <input type="text" id="edit-username-input" class="profile-input" placeholder="New username">
+                    <div id="username-edit-actions" class="profile-edit-actions">
+                        <button id="save-username-button" class="profile-save-button">Save</button>
+                        <button id="cancel-username-button" class="profile-cancel-button">Cancel</button>
+                    </div>
+                    <p id="profile-email" class="profile-text">Email: Loading...</p>
+                    <p class="profile-text">Your User ID: <span id="profile-user-id"
+                            class="profile-id-span">Loading...</span></p>
+                </div>
+            </div>
+            <h3 class="section-title">Your Posts</h3>
+            <div id="user-posts-container">
+                <p id="loading-user-posts" class="loading-message">Loading your posts...</p>
+                <p id="no-user-posts" class="empty-message">You haven't created any posts yet.</p>
+                <p id="user-posts-error" class="error-message">Error loading your posts.</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

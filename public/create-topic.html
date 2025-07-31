@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Create Topic</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="header-logo-container">
+            <img src="/talknest-logo.png" alt="TalkNest Logo" class="header-logo">
+            <h1>TalkNest</h1>
+        </div>
+        <div class="header-buttons">
+            <a href="/topics.html" class="button">Browse Topics</a>
+            <a href="/create-topic.html" class="button">Create Topic</a>
+            <a href="/create-post.html" class="button">Create Post</a>
+            <a href="/profile.html" class="button">Profile</a>
+            <button id="logout-button">Logout</button>
+        </div>
+    </header>
+    <main class="container">
+        <form id="create-topic-form">
+            <input type="text" id="topic-name" name="topic-name" placeholder="Topic Name (e.g., programming)" required>
+            <button type="submit">Create Topic</button>
+        </form>
+        <p id="error-message" class="error"></p>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
