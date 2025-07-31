@@ -22,7 +22,7 @@ function handleLoginForm() {
     const form = document.getElementById('login-form');
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        submitAuthForm('http://localhost:5001/users/login', {
+        submitAuthForm('/users/login', {
             email: form.email.value,
             password: form.password.value
         });
@@ -33,7 +33,7 @@ function handleSignupForm() {
     const form = document.getElementById('signup-form');
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        submitAuthForm('http://localhost:5001/users/register', {
+        submitAuthForm('/users/register', {
             username: form.username.value,
             email: form.email.value,
             password: form.password.value
@@ -75,7 +75,7 @@ function handleCreatePostForm() {
             link: form['post-link'].value
         };
         try {
-            const res = await fetch('http://localhost:5001/posts', {
+            const res = await fetch('/posts', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify(body)
@@ -103,7 +103,7 @@ function handleCreateTopicForm() {
             name: form['topic-name'].value,
         };
         try {
-            const res = await fetch('http://localhost:5001/topics', {
+            const res = await fetch('/topics', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify(body)
@@ -253,7 +253,7 @@ function setupCommonListeners(token) {
 
 async function fetchPosts() {
     try {
-        const res = await fetch('http://localhost:5001/posts');
+        const res = await fetch('/posts');
         if (!res.ok) throw new Error('Failed to fetch posts.');
         const posts = await res.json();
         const container = document.getElementById('posts-container');
@@ -270,7 +270,7 @@ async function fetchPosts() {
 
 async function fetchTopics() {
     try {
-        const res = await fetch('http://localhost:5001/topics');
+        const res = await fetch('/topics');
         if (!res.ok) throw new Error('Failed to fetch topics.');
         const topics = await res.json();
         const container = document.getElementById('topics-container');
@@ -288,7 +288,7 @@ async function fetchTopics() {
 
 async function fetchTopicPosts(topicName) {
     try {
-        const res = await fetch(`http://localhost:5001/topics/${topicName}/posts`);
+        const res = await fetch(`/topics/${topicName}/posts`);
         if (!res.ok) throw new Error('Failed to fetch topic posts.');
         const posts = await res.json();
         const container = document.getElementById('posts-container');
@@ -322,7 +322,7 @@ function getUserIdFromToken() {
 
 async function fetchUserProfile(userId, token) {
     try {
-        const res = await fetch(`http://localhost:5001/users/${userId}/profile`, {
+        const res = await fetch(`/users/${userId}/profile`, {
             method: 'GET',
             headers: { 'Authorization': `Bearer ${token}` }
         });
@@ -352,7 +352,7 @@ async function fetchUserProfile(userId, token) {
 
 async function fetchSinglePost(postId) {
     try {
-        const res = await fetch(`http://localhost:5001/posts/${postId}`);
+        const res = await fetch(`/posts/${postId}`);
         if (!res.ok) throw new Error('Failed to fetch post.');
         const post = await res.json();
         const currentUserId = getUserIdFromToken();
@@ -398,7 +398,7 @@ async function fetchSinglePost(postId) {
 
 async function handleLikeDislike(type, postId, token, buttonElement) {
     try {
-        const res = await fetch(`http://localhost:5001/posts/${postId}/${type}`, {
+        const res = await fetch(`/posts/${postId}/${type}`, {
             method: 'POST',
             headers: { 'Authorization': `Bearer ${token}` }
         });
@@ -441,7 +441,7 @@ async function handleLikeDislike(type, postId, token, buttonElement) {
 
 async function handleCommentSubmit(postId, text, parentCommentId, token) {
     try {
-        const res = await fetch(`http://localhost:5001/posts/${postId}/comments`, {
+        const res = await fetch(`/posts/${postId}/comments`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
             body: JSON.stringify({ text, parentCommentId })
@@ -454,8 +454,6 @@ async function handleCommentSubmit(postId, text, parentCommentId, token) {
         document.getElementById('error-message').textContent = error.message;
     }
 }
-
-
 
 function renderPost(post, currentUserId) {
     const userLiked = post.likes.includes(currentUserId);
@@ -509,7 +507,7 @@ function renderCommentTree(comments) {
         el.innerHTML = `
             <p>${comment.text}</p>
             <div class="post-meta">
-                <span>Comment by ${comment.author ? comment.author.username : '[deleted]'}</span>
+                <span>Comment by ${comment.author ? post.author.username : '[deleted]'}</span>
                 <button class="reply-btn" data-comment-id="${comment._id}">Reply</button>
             </div>`;
         if (comment.children && comment.children.length > 0) {
