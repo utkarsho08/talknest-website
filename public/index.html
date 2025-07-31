@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TalkNest</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>TalkNest</h1>
+        <div class="header-buttons">
+            <a href="/topics.html" class="button">Browse Topics</a>
+            <a href="/create-topic.html" class="button">Create Topic</a>
+            <a href="/create-post.html" class="button">Create Post</a>
+            <a href="/profile.html" class="button">Profile</a>
+            <button id="logout-button">Logout</button>
+        </div>
+    </header>
+
+    <div class="container main-layout">
+        <main class="main-content">
+            <h2>All Posts</h2>
+            <div id="posts-container">
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <h3>Popular Topics</h3>
+            <div class="topic-list">
+                <div class="topic-item"><a href="/topics.html?name=webdev">t/webdev</a></div>
+                <div class="topic-item"><a href="/topics.html?name=programming">t/programming</a></div>
+                <div class="topic-item"><a href="/topics.html?name=javascript">t/javascript</a></div>
+                <div class="topic-item"><a href="/topics.html?name=asktopic">t/asktopic</a></div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>About This Project</h3>
+                <p>A simple and interactive social media website where like minded people can talk to each other and
+                    grow.</p>
+            </div>
+        </aside>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
