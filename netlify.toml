@@ -1,10 +1,7 @@
 [build]
-  command = "npm install"
-  publish = "../frontend/dist"
-  base    = "backend"
-
-[functions]
-  directory = "functions"
+  command = "cd backend && npm install"
+  publish = "frontend/dist"
+  functions = "backend/functions"
 
 [[redirects]]
   from = "/api/*"
