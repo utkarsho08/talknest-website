@@ -8,11 +8,9 @@ const postRoutes = require('./routes/posts');
 const topicRoutes = require('./routes/topics');
 
 const app = express();
-const PORT = process.env.PORT || 5001;
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public'));
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('MongoDB connection established successfully ✅'))
@@ -22,6 +20,5 @@ app.use('/users', userRoutes);
 app.use('/posts', postRoutes);
 app.use('/topics', topicRoutes);
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port: ${PORT}`);
-});
+// Export the app for Netlify to use
+module.exports = app;
