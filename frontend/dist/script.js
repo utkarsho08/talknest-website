@@ -1,3 +1,5 @@
+const API_BASE_URL = 'https://talknest-website.onrender.com';
+
 document.addEventListener('DOMContentLoaded', () => {
     const pageLogic = {
         'login-form': handleLoginForm,
@@ -22,7 +24,7 @@ function handleLoginForm() {
     const form = document.getElementById('login-form');
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        submitAuthForm('/api/users/login', {
+        submitAuthForm(`${API_BASE_URL}/api/users/login`, {
             email: form.email.value,
             password: form.password.value
         });
@@ -33,7 +35,7 @@ function handleSignupForm() {
     const form = document.getElementById('signup-form');
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        submitAuthForm('/api/users/register', {
+        submitAuthForm(`${API_BASE_URL}/api/users/register`, {
             username: form.username.value,
             email: form.email.value,
             password: form.password.value
@@ -75,7 +77,7 @@ function handleCreatePostForm() {
             link: form['post-link'].value
         };
         try {
-            const res = await fetch('/api/posts', {
+            const res = await fetch(`${API_BASE_URL}/api/posts`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify(body)
@@ -103,7 +105,7 @@ function handleCreateTopicForm() {
             name: form['topic-name'].value,
         };
         try {
-            const res = await fetch('/api/topics', {
+            const res = await fetch(`${API_BASE_URL}/api/topics`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
                 body: JSON.stringify(body)
@@ -253,7 +255,7 @@ function setupCommonListeners(token) {
 
 async function fetchPosts() {
     try {
-        const res = await fetch('/api/posts');
+        const res = await fetch(`${API_BASE_URL}/api/posts`);
         if (!res.ok) throw new Error('Failed to fetch posts.');
         const posts = await res.json();
         const container = document.getElementById('posts-container');
@@ -270,7 +272,7 @@ async function fetchPosts() {
 
 async function fetchTopics() {
     try {
-        const res = await fetch('/api/topics');
+        const res = await fetch(`${API_BASE_URL}/api/topics`);
         if (!res.ok) throw new Error('Failed to fetch topics.');
         const topics = await res.json();
         const container = document.getElementById('topics-container');
@@ -288,7 +290,7 @@ async function fetchTopics() {
 
 async function fetchTopicPosts(topicName) {
     try {
-        const res = await fetch(`/api/topics/${topicName}/posts`);
+        const res = await fetch(`${API_BASE_URL}/api/topics/${topicName}/posts`);
         if (!res.ok) throw new Error('Failed to fetch topic posts.');
         const posts = await res.json();
         const container = document.getElementById('posts-container');
@@ -322,7 +324,7 @@ function getUserIdFromToken() {
 
 async function fetchUserProfile(userId, token) {
     try {
-        const res = await fetch(`/api/users/${userId}/profile`, {
+        const res = await fetch(`${API_BASE_URL}/api/users/${userId}/profile`, {
             method: 'GET',
             headers: { 'Authorization': `Bearer ${token}` }
         });
@@ -352,7 +354,7 @@ async function fetchUserProfile(userId, token) {
 
 async function fetchSinglePost(postId) {
     try {
-        const res = await fetch(`/api/posts/${postId}`);
+        const res = await fetch(`${API_BASE_URL}/api/posts/${postId}`);
         if (!res.ok) throw new Error('Failed to fetch post.');
         const post = await res.json();
         const currentUserId = getUserIdFromToken();
@@ -398,7 +400,7 @@ async function fetchSinglePost(postId) {
 
 async function handleLikeDislike(type, postId, token, buttonElement) {
     try {
-        const res = await fetch(`/api/posts/${postId}/${type}`, {
+        const res = await fetch(`${API_BASE_URL}/api/posts/${postId}/${type}`, {
             method: 'POST',
             headers: { 'Authorization': `Bearer ${token}` }
         });
@@ -441,7 +443,7 @@ async function handleLikeDislike(type, postId, token, buttonElement) {
 
 async function handleCommentSubmit(postId, text, parentCommentId, token) {
     try {
-        const res = await fetch(`/api/posts/${postId}/comments`, {
+        const res = await fetch(`${API_BASE_URL}/api/posts/${postId}/comments`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
             body: JSON.stringify({ text, parentCommentId })
