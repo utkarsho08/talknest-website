@@ -7,7 +7,7 @@ A minimalist community discussion platform inspired by **Reddit** and **Discord*
 ## 🌐 Live Demo
 
 - **Frontend:** Deployed on [Netlify](https://talknest-social.netlify.app/)
-- **Backend:** Deployed via [Render](https://talknest-website.onrender.com)
+- **Backend:** Hosted via Render (hidden from public view)
 
 ---
 
