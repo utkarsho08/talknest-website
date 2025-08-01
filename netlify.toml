@@ -1,7 +1,10 @@
 [build]
   command = "npm install"
-  publish = "public"
-  functions = "netlify/functions"
+  publish = "../frontend" # The location of your HTML files relative to the base
+  base    = "backend"     # The folder with your server.js and package.json
+
+[functions]
+  directory = "functions" # The folder for your Netlify function, relative to the base
 
 [[redirects]]
   from = "/*"
