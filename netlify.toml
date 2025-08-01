@@ -1,12 +1,17 @@
 [build]
   command = "npm install"
-  publish = "../frontend/dist" # Corrected path
+  publish = "../frontend/dist"
   base    = "backend"
 
 [functions]
   directory = "functions"
 
 [[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/server/:splat"
+  status = 200
+
+[[redirects]]
   from = "/*"
-  to = "/.netlify/functions/server"
+  to = "/index.html"
   status = 200
