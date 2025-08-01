@@ -16,9 +16,10 @@ mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('MongoDB connection established successfully ✅'))
     .catch(err => console.error('🔴 MongoDB connection error:', err.message));
 
-app.use('/users', userRoutes);
-app.use('/posts', postRoutes);
-app.use('/topics', topicRoutes);
 
-// Export the app for Netlify to use
+app.use('/api/users', userRoutes);
+app.use('/api/posts', postRoutes);
+app.use('/api/topics', topicRoutes);
+
+
 module.exports = app;
